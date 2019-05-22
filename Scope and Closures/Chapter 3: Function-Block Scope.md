@@ -5,7 +5,7 @@
 Lexical scope is based on where variables and blocks of scope are authored, at write time, and thus is (mostly) set in stone by the time the lexer processes your code.
 
 Consider the following code for example
-<img src="img/ch2/fig1.png" style="display: block;"width="500">
+<img src="img/ch2/fig1.png" style="display: block;" width="500">
 
 **Bubble 1** encompasses the global scope, and has just one identifier in it: `foo`.
 
