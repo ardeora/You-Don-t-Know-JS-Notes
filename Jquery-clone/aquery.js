@@ -1,0 +1,1 @@
+// Creating a version of jquery using the module pattern
