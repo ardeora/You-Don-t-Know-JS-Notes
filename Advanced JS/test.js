@@ -1,16 +1,38 @@
+// const food = {
+//     init: function(type) {
+//         this.type = type;
+//     },
+//     eat: function() {
+//         console.log('Eating ', this.type);
+//     }
+// }
 
-function foo() {
-    this.baz = 'baz'; 
-    console.log(this.name);
+// const waffle = Object.create(food);
+
+
+// console.dir(food);
+// console.log(waffle);
+
+function Food(food) {
+    this.food = food;
 }
 
-obj = {
-    name: 'Aryan',
+Food.prototype.eat = function eat() {
+    console.log('Eating ' + this.food);
 }
 
-var name = 'Deora';
+function Waffle(type) {
+    this.type = type;
+    Food.call(this,`${this.type} Waffle`);
+}
 
-foo.call(obj);
-foo();
+Waffle.prototype = Object.create(Food.prototype);
 
-console.log(obj);
+Waffle.prototype.pourSyrup = function pourSyrup(flavor) {
+    console.log(`Pouring ${flavor} syrup on ${this.type} Waffle`);
+}
+
+const w1 = new Waffle('Blue-Berry');
+w1.pourSyrup('Maple');
+w1.eat();
+console.dir(w1);
