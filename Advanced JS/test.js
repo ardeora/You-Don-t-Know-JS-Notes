@@ -1,35 +1,47 @@
-// const food = {
-//     init: function(type) {
-//         this.type = type;
-//     },
-//     eat: function() {
-//         console.log('Eating ', this.type);
-//     }
+// function Food(food) {
+//     this.food = food;
 // }
 
-// const waffle = Object.create(food);
+// Food.prototype.eat = function eat() {
+//     console.log('Eating ' + this.food);
+// }
+
+// function Waffle(type) {
+//     this.type = type;
+//     Food.call(this,`${this.type} Waffle`);
+// }
+
+// Waffle.prototype = Object.create(Food.prototype);
+
+// Waffle.prototype.pourSyrup = function pourSyrup(flavor) {
+//     console.log(`Pouring ${flavor} syrup on ${this.type} Waffle`);
+// }
+
+// const w1 = new Waffle('Blue-Berry');
+// w1.pourSyrup('Maple');
+// w1.eat();
+// console.dir(w1);
 
 
-// console.dir(food);
-// console.log(waffle);
+class Food {
+    constructor(food) {
+        this.food = food;
+    }
 
-function Food(food) {
-    this.food = food;
+    eat() {
+        console.log('Eating ' + this.food); 
+    }
 }
 
-Food.prototype.eat = function eat() {
-    console.log('Eating ' + this.food);
-}
+class Waffle extends Food {
+    constructor(type) {
+        super(`${type} Waffle`);
+        this.type = type;
+    }
 
-function Waffle(type) {
-    this.type = type;
-    Food.call(this,`${this.type} Waffle`);
-}
-
-Waffle.prototype = Object.create(Food.prototype);
-
-Waffle.prototype.pourSyrup = function pourSyrup(flavor) {
-    console.log(`Pouring ${flavor} syrup on ${this.type} Waffle`);
+    pourSyrup(flavor) {
+        console.log(`Pouring ${flavor} syrup on ${this.type} Waffle`);
+    }
 }
 
 const w1 = new Waffle('Blue-Berry');
